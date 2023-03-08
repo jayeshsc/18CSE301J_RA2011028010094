@@ -1,31 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
     <title>Jayesh Chaudhari</title>
-</head>
-<body>
-    
-  <center> <h1>18CSE301J INFORMATION VISUALIZATION</h1>
-    <h1>JAYESH CHAUDHARI</h1>
 
-    <h2>TABLEAU PROJECT</h2>
+    <!-- link tags -->
+    <link rel="stylesheet" href="./css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="./javascript/scrollreveal.min.js"></script>
+    <script
+      defer
+      type="text/javascript"
+      src="./javascript/scrollveal.js"
+    ></script>
+  
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-122228201-4");
+    </script>
+    <!-- End of Google Analytics -->
+  </head>
+  <body>
+    <!-- Hero Section -->
+    <div id="hero">
+      <section class="container">
+        <h1 class="hero-title">
+          Hi, my name is <span class="text-color-main name">Jayesh</span>
+          <br />
+          This is my Information Visualization Project.
+        </h1>
+        <p class="hero-cta">
+          <a class="cta-btn cta-btn--hero" href="#about">About Data</a>
+        </p>
+      </section>
+      <a href="#about" class="scroll-down-link" aria-label="scroll-down">
+        <div class="scroll-down"></div
+      ></a>
+    </div>
+    <!-- /END Hero Section -->
+
+    <!-- About Section -->
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">About Dataset</h2>
+        <div class="row about-wrapper">
+          <div class="about-wrapper__image">
+            <img
+              class="img-fluid"
+              src="./assets/datagov-logo.12b443ac.svg"
+              alt="Profile Image"
+            />
+          </div>
+          <div class="about-wrapper__info">
+            <p class="about-wrapper__info-text">
+             <strong>Fast Track Special Courts Scheme</strong> 
+              <br>
+              <br>
+              The Criminal Law Amendment Act, 2018 provided for the Fast Track Special Courts (FTSCs). Based on the pendency of cases in March 2018, a total of 1023 FTSCs including 389 exclusive POCSO (ePOCSO) Courts were earmarked by the Department of Justice to be implemented in 31 States/UTs for early disposal of cases related to rape and POCSO Act. This Centrally Sponsored Scheme started initially for one year in October 2019 which now has been continued for two more FY, i.e., till March, 2023.
+           <br>
+           <br>
+           This data set contains data of 28 States/UT regarding the Number of Functional Fast Track Special Courts (FTSCs) from 2020 to 2022
+            </p>
+            <p class="about-wrapper__info-text">
+              Provider : data.gov.in
+              <br>
+              File size : 743 bytes
+             <br>
+              Granularity : Annual
+              <br>
+              Published on : 24/02/2023
+              <br>
+              Updated on : 24/02/2023
+              <br>
+              Contributors : Ministry of Law and Justice , Department of Justice
+              <br>
+              Domain : Open Government Data (OGD) Platform India
+
+            </p>
+            <span class="about-wrapper__cta">
+              <a href="https://github.com/jayeshsc/18CSE301J_RA2011028010094/tree/main/Data%20Set" target="_blank" class="cta-btn cta-btn--resume">Download Dataset</a>  <a href="https://data.gov.in/catalog/fast-track-special-courts-scheme" target="_blank" class="cta-btn cta-btn--resume">Dataset source</a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /END About Section -->
+
+    <!--Projects Section-->
+    <section id="projects">
+      <div class="container">
+        <div class="project-wrapper">
+          <h2 class="section-title dark-blue-text">Projects</h2>
+
+          <!-- Each .row is a project -->
+          <article class="row">
+            <div class="project-wrapper__text">
+              <h3 class="project-wrapper__text-title">Tableau Project</h3>
+              <p class="project-wrapper__text-info">
+                This is the dashboard created using Tableau using the Fast Court Data. This is interactive dashboard with buttons and range filters . This dashboard also allows to download as PDF.
+              </p>
+              <div class="project-wrapper__text-btns">
+                <a
+                  href="https://public.tableau.com/views/fasttrackcourt/PageHome?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="cta-btn cta-btn--hero cta-btn--projects"
+                  >See Live</a
+                >
+                <a href="https://github.com/jayeshsc/18CSE301J_RA2011028010094/tree/main/Tableau%20Project" target="_blank" class="cta-btn text-color-main"
+                  >Source Code</a
+                >
+              </div>
+            </div>
+
+            <div class="project-wrapper__image">
+              <a href="https://public.tableau.com/views/fasttrackcourt/PageHome?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link" target="_blank" rel="noopener noreferrer">
+                <div class="thumbnail rounded">
+                  <img
+                    src="./assets/TABLEAU PROJECT.png"
+                    class="img-fluid"
+                    alt="Project Image"
+                  />
+                </div>
+              </a>
+            </div>
+          </article>
+          <!-- /END Project -->
+
+          <!-- Each .row is a project -->
+          <article class="row">
+            <div class="project-wrapper__text">
+              <h3 class="project-wrapper__text-title">Python Project</h3>
+              <p class="project-wrapper__text-info">
+                This are the visualizations created using python coding without using any Graphical User Internface (GUI). <br> Libraries used such as :
+                <br>
+                Pandas
+                 
+                 <br> Numbpy
+                 <br> Matplotlib
+                 <br> Seaborn
+              </p>
+              <div class="project-wrapper__text-btns">
+                <a
+                  href="https://colab.research.google.com/gist/jayeshsc/15fb0d2c42184b850889e2e91ad0cc8b/fasttrackcourt.ipynb"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="cta-btn cta-btn--hero cta-btn--projects"
+                  >See Live</a
+                >
+                <a href="https://github.com/jayeshsc/18CSE301J_RA2011028010094/tree/main/Python%20Project" target="_blank" class="cta-btn text-color-main"
+                  >Source Code</a
+                >
+              </div>
+            </div>
+
+            <div class="project-wrapper__image">
+              <a href="#" target="_blank" rel="noopener noreferrer">
+                <div class="thumbnail rounded">
+                  <img
+                    src="./assets/PYTHON PROJECT.png"
+                    class="img-fluid"
+                    alt="Project Image"
+                  />
+                </div>
+              </a>
+            </div>
+          </article>
+          <!-- /END Project -->
+
+          <!-- Each .row is a project -->
+          <article class="row">
+            <div class="project-wrapper__text">
+              <h3 class="project-wrapper__text-title">D3.JS Project</h3>
+              <p class="project-wrapper__text-info">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Deleniti voluptas, sit nam perspiciatis tempore aspernatur ullam
+                necessitatibus impedit repellendus vero sed ipsa eos beatae ab
+                sint saepe nostrum! Enim, perferendis.
+              </p>
+              <div class="project-wrapper__text-btns">
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="cta-btn cta-btn--hero cta-btn--projects"
+                  >See Live</a
+                >
+                <a href="#" target="_blank" class="cta-btn text-color-main"
+                  >Source Code</a
+                >
+              </div>
+            </div>
+
+            <div class="project-wrapper__image">
+              <a href="#" target="_blank" rel="noopener noreferrer">
+                <div class="thumbnail rounded">
+                  <img
+                    src="./assets/project.png"
+                    class="img-fluid"
+                    alt="Project Image"
+                  />
+                </div>
+              </a>
+            </div>
+          </article>
+          <!-- /END Project -->
+        </div>
+      </div>
+    </section>
+    <!-- End Projects Section -->
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-wrapper">
+          <p class="contact-wrapper__text">📨 Email Me</p>
+          <a href="mailto:jc4529@srmist.edu.in" class="cta-btn cta-btn--resume">💌 Mail</a>
+        </div>
+      </div>
+    </section>
+    <!-- END Contact Section -->
+
+    <!-- Footer Section -->
+    <footer class="footer">
+      <div class="container">
+        <a href="#hero" class="back-to-top" aria-label="go back to top">
+          <i class="fa fa-angle-up fa-2x" aria-hidden="true"></i>
+        </a>
+        <div class="social-links">
+       
+           
+          
+        
+          </a>
+          <a
+            href="https://www.linkedin.com/in/jayeshsc/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="linkedin"
+          >
+            <i class="fa fa-linkedin"></i>
+          </a>
+          <a
+            href="https://github.com/jayeshsc"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="github"
+          >
+            <i class="fa fa-github"></i>
+          </a>
+        </div>
+        <hr />
+        <p class="footer__text">
+        <br />Made with &hearts;
+    by 
+          <a
+            href="https://github.com/jayeshsc"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Jayesh Chaudhari</a
+          >.
       <br>
-      
-      <p>This data when visualised provide information regarding Number of Functional Fast Track Special Courts</p>
-<br>
-<br>
-      <div class='tableauPlaceholder' id='viz1677516877435' style='position: relative'><noscript><a href='#'><img alt='Page Home ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;fa&#47;fasttrackcourt&#47;PageHome&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='fasttrackcourt&#47;PageHome' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;fa&#47;fasttrackcourt&#47;PageHome&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1677516877435');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else { vizElement.style.width='100%';vizElement.style.height='877px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-</center> 
+       RA2011028010094
+        <br>
+        18CSE301J - Information Visualization
+          
+        </p>
+      </div>
+    </footer>
+    <!-- END Footer Section -->
 
-
-<br>
-<br>
-<center>
-<h2>PYTHON PROJECT</h2>
-
-</center>
-</body>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+    <script src="./javascript/vanilla-tilt.min.js"></script>
+    <script type="text/javascript" src="./javascript/valtilt.js"></script>
+  </body>
 </html>
