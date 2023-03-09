@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fast Track Court Pie Chart | 2021 </title>
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <style>
+        .arc {
+            fill: white;
+        }
+
+        .arc:hover {
+            fill: #000;
+            color: #fff;
+        }
+        
+        
+        
+        .text {
+            font-family: sans-serif;
+            font-size: 14px;
+            text-anchor: middle;
+            background-color: red;
+        }
+
+        .slice {
+            stroke-width: 2px;
+        }
+        
+		button{
+            width: 200px;	
+            height: 30px;
+            border-radius: 10px;
+            background-color: #2997ff;
+            border: none;
+            color: white;
+    text-decoration: none;
+            }
+            a{
+                text-decoration: none;
+                color: white;
+            }
+            button:hover{
+            background-color: #0071e3;
+            }
+            div{
+                background-color: #333336;
+                border-radius: 10px;
+                opacity: 90%;     
+                width: 850px;
+               height: 75px;
+               
+            }
+    </style>
+</head>
+<body>
+<center><h1>D3.js Project</h1>
+<h2>JAYESH S CHAUDHARI (RA2011028010094)</h2>
+<br>
+<div>
+    <br>
+    <button><a href="d3index.html">Back to Main Page</a></button> <button><a href="d3pie1.html">2020 Data</a></button> <button><a href="d3pie2.html">2021 Data</a></button> <button><a href="d3pie3.html">2022 Data</a></button>
+</div>
+</center>
+
+    <br>
+    <br>
+    <h1>Functional Fast Court Pie Chart for Year 2021</h1>
+    <script>
+        // Set the dimensions of the canvas
+        var margin = {top: 20, right: 20, bottom: 30, left: 50},
+            width = 960 - margin.left - margin.right,
+            height = 500 - margin.top - margin.bottom;
+
+        // Adds the svg canvas
+        var svg = d3.select("body")
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform",
+            "translate(" + (width / 2) + "," + (height / 2) + ")");
+
+        // Get the data
+        d3.csv("fasttrackcourt1.csv", function(error, data) {
+            if (error) throw error;
+
+            // format the data
+            data.forEach(function(d) {
+                d["2021"] = +d["2021"];
+                d["2021"] = +d["2021"];
+                d["2022"] = +d["2022"];
+            });
+
+            // Define the radius
+            var radius = Math.min(width, height) / 2;
+
+            // Define the color scale
+            var color = d3.scale.category20();
+
+            // Define the arc
+            var arc = d3.svg.arc()
+                .outerRadius(radius - 10)
+                .innerRadius(0);
+
+            // Define the pie layout
+            var pie = d3.layout.pie()
+                .sort(null)
+                .value(function(d) { return d["2021"]; });
+
+            // Add the slices
+            var g = svg.selectAll(".arc")
+                .data(pie(data))
+                .enter().append("g")
+                .attr("class", "arc");
+
+            var slice = g.append("path")
+                .attr("d", arc)
+                .attr("class", "slice")
+                .style("fill", function(d) { return color(d.data.state_ut); });
+
+            // Add the text labels
+            g.append("text")
+                .attr("transform", function(d) {
+                    var centroid = arc.centroid(d);
+                    return "translate(" + centroid[0] + "," + centroid[1] + ")";
+                })
+                .attr("dy", ".35em")
+                .text(function(d) { return d.data.state_ut; })
+                .attr("class", "text");
+
+            // Add the tooltip
+            slice.on("mouseover", function(d) {
+                d3.select(this)
+                    .style("fill", "#999");
+
+                var total = d3.sum(data.map(function(d) {
+                    return d["2021"];
+                }));
+
+                var percent = Math.round(1000 * d.data["2021"] / total) / 10;
+
+               
+				var tooltip = d3.select("#tooltip")
+                .style("visibility", "visible");
+
+            tooltip.select("#state_ut")
+                .text(d.data.state_ut);
+
+            tooltip.select("#year")
+                .text("2021");
+
+            tooltip.select("#cases")
+                .text(d.data["2021"].toLocaleString());
+
+            tooltip.select("#percent")
+                .text(percent + "%");
+        })
+        .on("mousemove", function() {
+            var tooltip = d3.select("#tooltip");
+            tooltip.style("top", (d3.event.pageY - 10) + "px")
+                .style("left", (d3.event.pageX + 10) + "px");
+        })
+        .on("mouseout", function(d) {
+            d3.select(this)
+                .style("fill", function(d) { return color(d.data.state_ut); });
+
+            var tooltip = d3.select("#tooltip")
+                .style("visibility", "hidden");
+        });
+    });
+</script>
+
+<div id="tooltip" style="position: absolute; visibility: hidden;">
+    <h4 id="state_ut"></h4>
+    <table>
+        <tr>
+            <td>Year:</td>
+            <td id="year"></td>
+        </tr>
+        <tr>
+            <td>Courts:</td>
+            <td id="cases"></td>
+        </tr>
+        <tr>
+            <td>Percent:</td>
+            <td id="percent"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

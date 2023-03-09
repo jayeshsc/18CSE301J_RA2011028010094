@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Functional Fast Track Court | Line Graph</title>
+	<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<style>
+		.axis path,
+		.axis line {
+			fill: none;
+			stroke: black;
+			shape-rendering: crispEdges;
+		}
+
+		.line1 {
+			fill: none;
+			stroke: blue;
+			stroke-width: 2px;
+		}
+		
+		.line2 {
+			fill: none;
+			stroke: green;
+			stroke-width: 2px;
+		}
+		
+		.line3 {
+			fill: none;
+			stroke: red;
+			stroke-width: 2px;
+		}
+        
+		button{
+		width: 200px;	
+		height: 30px;
+		border-radius: 10px;
+		background-color: #2997ff;
+		border: none;
+		color: white;
+text-decoration: none;
+		}
+		a{
+			text-decoration: none;
+			color: white;
+		}
+		button:hover{
+		background-color: #0071e3;
+		}
+	</style>
+</head>
+<body>
+<center><h1>D3.js Project</h1></center>
+<center><h2>JAYESH S CHAUDHARI (RA2011028010094)</h2></center>
+<button><a href="d3index.html"> Return to D3.js Main Page</a></button>
+    <br>
+    <br>
+	<h1>Functional Fast Track Court Line Graph</h1>
+	<script>
+		// Set the dimensions of the canvas
+		var margin = {top: 20, right: 20, bottom: 30, left: 50},
+		    width =2500 - margin.left - margin.right,
+		    height = 1000 - margin.top - margin.bottom;
+
+		// Parse the date/time
+		var parseDate = d3.time.format("%Y").parse;
+
+		// Set the ranges
+		var x = d3.scale.ordinal().rangeRoundBands([0, width], 0.1);
+		var y = d3.scale.linear().range([height, 0]);
+
+		// Define the axis
+		var xAxis = d3.svg.axis().scale(x)
+		    .orient("bottom");
+
+		var yAxis = d3.svg.axis().scale(y)
+		    .orient("left").ticks(5);
+
+		// Define the line
+		var valueline1 = d3.svg.line()
+		    .x(function(d) { return x(d.state_ut); })
+		    .y(function(d) { return y(d["2020"]); });
+		    
+		var valueline2 = d3.svg.line()
+		    .x(function(d) { return x(d.state_ut); })
+		    .y(function(d) { return y(d["2021"]); });
+		    
+		var valueline3 = d3.svg.line()
+		    .x(function(d) { return x(d.state_ut); })
+		    .y(function(d) { return y(d["2022"]); });
+
+		// Adds the svg canvas
+		var svg = d3.select("body")
+		    .append("svg")
+		    .attr("width", width + margin.left + margin.right)
+		    .attr("height", height + margin.top + margin.bottom)
+		    .append("g")
+		    .attr("transform",
+		    "translate(" + margin.left + "," + margin.top + ")");
+
+		// Get the data
+		d3.csv("fasttrackcourt1.csv", function(error, data) {
+			if (error) throw error;
+
+			// format the data
+			data.forEach(function(d) {
+				d["2020"] = +d["2020"];
+				d["2021"] = +d["2021"];
+				d["2022"] = +d["2022"];
+			});
+
+			// Set the domain of the axes
+			x.domain(data.map(function(d) { return d.state_ut; }));
+			y.domain([0, d3.max(data, function(d) {
+				return Math.max(d["2020"], d["2021"], d["2022"]);
+			})]);
+
+			// Add the valueline paths
+			svg.append("path")
+				.attr("class", "line1")
+				.attr("d", valueline1(data));
+
+			svg.append("path")
+				.attr("class", "line2")
+				.attr("d", valueline2(data));
+
+			svg.append("path")
+				.attr("class", "line3")
+				.attr("d", valueline3(data));
+
+			// Add the X Axis
+			svg.append("g")
+				.attr("class", "x axis")
+				.attr("transform", "translate(0," + height + ")")
+				.text("State / UT")
+				.call(xAxis);
+			    
+
+			// Add the Y Axis
+			svg.append("g")
+				.attr("class", "y axis")
+				.call(yAxis);
+
+               //Add a title to x axis
+				svg.append("text")
+				.attr("class", "x label")
+				.attr("text-anchor", "end")
+				.attr("x", width)
+				.attr("y", height - 6)
+				.text("State / UT");
+				 
+				//Add a title to Y axis
+				svg.append("text")
+            .attr("class", "axis-label")
+            .attr("text-anchor", "middle")
+			.attr("transform", "rotate(-90) translate(" + (-height/2) + "," + (-margin.left + 20) + ")")
+			.text("No. of Functional Fast track Courts");
+
+
+			// Add a title to the chart
+			svg.append("text")
+				.attr("x", (width / 2))
+				.attr("y", 0 - (margin.top / 5))
+				.attr("text-anchor", "middle")
+				.style("font-size", "16px")
+				.text("Functional Fast Track Court State/UT-wise from 2020 to 2022");
+
+			// Add a legend
+			var legend = svg.selectAll("g.legend")
+				.data(["2020", "2021", "2022"])
+				.enter().append("g")
+				.attr("class", "legend")
+				.attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+			legend.append("rect")
+				.attr("x", width - 18)
+				.attr("width", 18)
+				.attr("height", 18)
+				.style("fill", function(d, i) { return ["blue", "green", "red"][i]; });
+
+			legend.append("text")
+				.attr("x", width - 24)
+				.attr("y", 9)
+				.attr("dy", ".35em")
+				.style("text-anchor", "end")
+				.text(function(d) { return d; });
+		});
+	</script>
+</body>
+</html>
